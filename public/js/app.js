@@ -1,0 +1,1 @@
+!function(){"use strict";function n(n,i){n.otherwise("/"),i.html5Mode({enabled:!1,requireBase:!1}),i.hashPrefix("!")}function i(){FastClick.attach(document.body)}angular.module("application",["ui.router","ngAnimate","foundation","foundation.dynamicRouting","foundation.dynamicRouting.animations"]).config(n).run(i),n.$inject=["$urlRouterProvider","$locationProvider"]}();
