@@ -43,17 +43,7 @@
             <tr>
                 <td>commentaire </td><td>{{$catalogue->commentaire}}</td>
             </tr>
-            <tr>
-                <td>catalogue</td>
-                <td>
-                    <?php if(count(glob("document/catalogues/$catalogue->id")) === 0){ ?>
-                        Absent
-                    <?php }else{?>
-                        <a href="/catalogue/{{$catalogue->id}}/download" class="btn btn-default">Telecharger</a>
 
-                    <?php } ?>
-                </td>
-            </tr>
 
         </table>
 

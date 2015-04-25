@@ -65,16 +65,7 @@
             </div>
             <br/>
 
-            <div class="form-group">
-                {!! Form::label("input catalogue",'Version Pdf',array('class'=>'col-sm-2 control-label')) !!}
-                <div class="col-sm-10">
-                    {!! Form::file('catalogue', $attributes = array()) !!}
-                    @if($errors->has())
-                        {!! $errors->first("catalogue",'<p class="text-danger">:message</p>')!!}
-                    @endif
-                </div>
-            </div>
-            <br/>
+
 
 
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">

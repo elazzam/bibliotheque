@@ -19,7 +19,7 @@
         </div>
         <div class="panel-body">
 
-            {!! Form::open(array('url' => "/catalogue/$catalogue->id", 'class'=>'form-horizontal','files' => 'true','method'=>'put')) !!}
+            {!! Form::open(array('url' => "/catalogue/$catalogue->id", 'class'=>'form-horizontal','method'=>'put')) !!}
 
             <div class="form-group">
                 {!! Form::label("inputAtelier",'Atelier',array('class'=>'col-sm-2 control-label')) !!}
@@ -105,25 +105,6 @@
             </div>
             <br/>
 
-            <div class="form-group">
-                {!! Form::label("input catalogue",'Version Pdf',array('class'=>'col-sm-2 control-label')) !!}
-                <div class="col-sm-10">
-
-                    {!! Form::file('catalogue', $attributes = array()) !!}
-                    @if($errors->has())
-                        {!! $errors->first("catalogue",'<p class="text-danger">:message</p>')!!}
-                    @endif
-                    <?php if(count(glob("document/catalogues/$catalogue->id")) === 0){ ?>
-                        Absent
-                    <?php }else{?>
-                        <a href="/catalogue/{{$catalogue->id}}/download" class="btn btn-default">Telecharger</a>
-
-                    <?php } ?>
-
-
-                </div>
-            </div>
-            <br/>
 
 
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">

@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\View;
 
 class CatalogueController extends Controller {
 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -76,11 +80,7 @@ class CatalogueController extends Controller {
         $catalogue->departement=Input::get('departement');
         $catalogue->save();
 
-        $file = Input::file('catalogue');
-        if($file) {
-            $name = Input::file('catalogue')->getClientOriginalName();
-            $file->move("document/catalogues/$catalogue->id", $name);
-        }
+
 
         $catalogues = Catalogue::orderBy('created_at','desc')->paginate(15);
         return View::make('catalogue.index', array('catalogues' => $catalogues));
@@ -97,7 +97,7 @@ class CatalogueController extends Controller {
         if(Catalogue::find($id)) {
             $catalogue = Catalogue::find($id);
             if (File::exists("document/catalogues/$id")) {
-                return View::make('catalogue.show')->with(['catalogue' => $catalogue, 'files' => File::allFiles("document/catalogues/$id")]);
+                return View::make('catalogue.show')->with(['catalogue' => $catalogue]);
             } else {
 
                 return View::make('catalogue.show')->with(['catalogue' => $catalogue]);
@@ -118,12 +118,10 @@ class CatalogueController extends Controller {
 	{
         if(Catalogue::find($id)) {
             $catalogue = Catalogue::find($id);
-            if (File::exists("document/catalogues/$id")) {
-                return View::make('catalogue.edit')->with(['catalogue' => $catalogue, 'files' => File::allFiles("document/catalogues/$id")]);
-            } else {
+
 
                 return View::make('catalogue.edit')->with(['catalogue' => $catalogue]);
-            }
+
         }
         else {
             return View::make('errors.404');
@@ -156,13 +154,7 @@ class CatalogueController extends Controller {
         $catalogue->commentaire=Input::get('commentaire');
         $catalogue->save();
 
-        $file = Input::file('catalogue');
 
-        if($file) {
-            $success = File::cleanDirectory("document/catalogues/$id");
-            $name = Input::file('catalogue')->getClientOriginalName();
-            $file->move("document/catalogues/$id", $name);
-        }
 
 
         $catalogues = Catalogue::orderBy('created_at','desc')->paginate(15);
@@ -184,14 +176,6 @@ class CatalogueController extends Controller {
         }
 	}
 
-    public function downloadcatalogue($id){
-        if(Catalogue::find($id)){
-            $files = File::allFiles("document/catalogues/$id");
-            foreach ($files as $file) {
-                return \Response::download($file);
-            }
-        }
 
-    }
 
 }

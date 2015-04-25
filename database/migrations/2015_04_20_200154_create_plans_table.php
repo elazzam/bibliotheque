@@ -22,6 +22,7 @@ class CreatePlansTable extends Migration {
             $table->boolean('disponible');
             $table->string('locataire');
             $table->date('date_sortie');
+
 			$table->timestamps();
 		});
 	}

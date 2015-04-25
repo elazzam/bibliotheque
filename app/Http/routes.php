@@ -21,6 +21,7 @@ Route::controllers([
 ]);
 
 Route::get('catalogue/{id}/download',array('uses'=>'CatalogueController@downloadcatalogue','as'=>'terrain.downloadcatalogue'));
+Route::get('plan/{id}/download',array('uses'=>'PlanController@downloadplan','as'=>'terrain.downloadplan'));
 
 Route::resource('catalogue','CatalogueController');
 Route::resource('plan','PlanController');
