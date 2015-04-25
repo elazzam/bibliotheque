@@ -7,14 +7,14 @@ class Plan extends Model {
 
     public static $rules=array(
 
-        'reference'=>'required',
-        'designation'=>'required',
+        'reference'=>'required|string',
+        'designation'=>'required|string',
         'commentaire'=>'string',
-        'departement'=>'required|in:preho',
+        'departement'=>'required|in:preho,concasseur',
         'date_sortie'=>'date',
         'locataire'=>'string',
-        'disponible'=>'in:0,1',
-        'plan'=>'mimes:pdf,jpg,png,jpeg|size:5000'
+        'disponible'=>'required|in:0,1',
+        'plan'=>'mimes:pdf,jpg,png,jpeg|max:10000'
 
     );
 

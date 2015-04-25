@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG'),
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'elazzamCreatedThisApp'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 

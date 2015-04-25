@@ -6,4 +6,4 @@
  * Time: 10:05 PM
  */
 ?>
-makaynachi had la page a l3ayal
+<img src="404.jpg" width="100%"/>
