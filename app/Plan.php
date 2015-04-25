@@ -13,7 +13,7 @@ class Plan extends Model {
         'departement'=>'required|in:preho,concasseur',
         'date_sortie'=>'date',
         'locataire'=>'string',
-        'disponible'=>'required|in:0,1',
+        'disponible'=>'in:0,1',
         'plan'=>'mimes:pdf,jpg,png,jpeg|max:10000'
 
     );

@@ -64,6 +64,8 @@ class CatalogueController extends Controller {
 	 */
 	public function store()
 	{
+
+        //dd(Input::all());
         $validation = Catalogue::validate(Input::all());
 
         if($validation->fails() ){
@@ -71,7 +73,7 @@ class CatalogueController extends Controller {
             return redirect()->back()->withErrors($validation->errors())->withInput();
         }
 
-        $catalogue = new Catalogue;
+        $catalogue = new Catalogue();
         $catalogue->reference=Input::get('reference');
         $catalogue->designation=Input::get('designation');
         $catalogue->disponible=0;//disponible
@@ -172,7 +174,7 @@ class CatalogueController extends Controller {
         if(Catalogue::find($id)) {
             $catalogue = Catalogue::find($id);
             $catalogue->delete($id);
-            return redirect()->back();
+            return redirect('/catalogue');
         }
 	}
 
